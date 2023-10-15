@@ -937,8 +937,6 @@ class CommentCell : TableViewCell, LikeItemDelegate, FLAlertLayerProtocol {
     void loadFromComment(GJComment*) = mac 0x111c70, win 0x5f3d0;
     void onConfirmDelete(cocos2d::CCObject* sender) = mac 0x11d100, win 0x61140;
     void onLike(cocos2d::CCObject* sender) = mac 0x11d000, win 0x60F90;
-    virtual void init();
-    virtual void draw();
     virtual void likedItem(LikeItemType type, int id, bool special) = mac 0x11d340, win 0x61070;
     virtual void FLAlert_Clicked(FLAlertLayer* layer, bool btn) = mac 0x11d540, win 0x61260;
 
