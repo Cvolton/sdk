@@ -1970,7 +1970,7 @@ class GJBaseGameLayer : cocos2d::CCLayer, TriggerEffectDelegate {
     void bumpPlayer(PlayerObject*, GameObject*) = mac 0xb6860, win 0x10ed50;
     void calculateOpacityValues(EffectGameObject*, EffectGameObject*, float, GJEffectManager*) = mac 0xb5be0;
     void checkSpawnObjects() = mac 0xb6f90, win 0x10f320;
-    void collectItem(int, int) = mac 0xb9e20, win 0x111890;
+    //void collectItem(int, int) = mac 0xb9e20, win 0x111890;
     void collectedObject(EffectGameObject*) = mac 0xb9b60, win 0x111830;
     void createTextLayers() = mac 0xb5260, win 0x10dea0;
     cocos2d::CCArray* damagingObjectsInRect(cocos2d::CCRect) = mac 0xb6140, win 0x10e740;
@@ -2426,7 +2426,7 @@ class GJGameLevel : cocos2d::CCNode {
     static GJGameLevel* create() = mac 0x2b83e0, win 0xbd2b0, ios 0x51fe8;
     gd::string getAudioFileName() = mac 0x2dbe70, win 0xbdc70;
     const char* getCoinKey(int) = mac 0x2ce360, win 0xbda50;
-    void getLengthKey(int) = mac 0x2dbba0;
+    //void getLengthKey(int) = mac 0x2dbba0;
     void getNormalPercent() = mac 0x2b8b20;
     void levelWasAltered() = mac 0x2db530, win 0xbd550;
     void savePercentage(int, bool, int, int, bool) = mac 0x2db700, win 0xbd5c0;
@@ -4109,7 +4109,7 @@ class LevelEditorLayer : GJBaseGameLayer, LevelSettingsDelegate {
     void updateDualGround(PlayerObject*, int, bool) = mac 0xa1a60, win 0x16b390;
     void updateEditorMode() = mac 0x93b50, win 0x1652b0;
     void updateGameObjectsNew() = mac 0x9adc0, win 0x1659a0;
-    void updateGround(float) = mac 0x93a60;
+    //void updateGround(float) = mac 0x93a60;
     void updateGroundWidth() {
         m_groundLayer->updateGroundWidth();
         if (m_previewMode) {
@@ -4231,7 +4231,7 @@ class LevelEditorLayer : GJBaseGameLayer, LevelSettingsDelegate {
 [[link(android)]]
 class LevelInfoLayer : cocos2d::CCLayer, LevelDownloadDelegate, LevelUpdateDelegate, RateLevelDelegate, LikeItemDelegate, FLAlertLayerProtocol, LevelDeleteDelegate, NumberInputDelegate, SetIDPopupDelegate {
     static LevelInfoLayer* create(GJGameLevel* level) = mac 0x15f290, win 0x175d50;
-    bool init(GJGameLevel* level) = win 0x175df0, mac 0x15f520;
+    bool init(GJGameLevel* level, bool) = win 0x175df0, mac 0x15f520;
     void onGarage(cocos2d::CCObject* sender) = win 0x177c10, mac 0x163ac0;
     void onViewProfile(cocos2d::CCObject* sender) = mac 0x1617d0, win 0x17ac90;
     void onLevelInfo(cocos2d::CCObject* sender) = mac 0x163880, win 0x17acf0;

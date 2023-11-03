@@ -127,8 +127,8 @@ struct LevelInfoLayerIDs : Modify<LevelInfoLayerIDs, LevelInfoLayer> {
         }
     }
 
-    bool init(GJGameLevel* level) {
-        if (!LevelInfoLayer::init(level)) return false;
+    bool init(GJGameLevel* level, bool challenge) {
+        if (!LevelInfoLayer::init(level, challenge)) return false;
 
         NodeIDs::get()->provide(this);
 
