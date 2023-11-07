@@ -5,7 +5,7 @@ using namespace geode::prelude;
 #include <Geode/modify/AppDelegate.hpp>
 
 struct SaveLoader : Modify<SaveLoader, AppDelegate> {
-    void trySaveGame() {
+    void trySaveGame(bool a) {
         log::info("Saving...");
 
         auto r = Loader::get()->saveData();
@@ -15,6 +15,6 @@ struct SaveLoader : Modify<SaveLoader, AppDelegate> {
 
         log::info("Saved");
 
-        return AppDelegate::trySaveGame();
+        return AppDelegate::trySaveGame(a);
     }
 };

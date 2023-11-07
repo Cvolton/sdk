@@ -1664,6 +1664,7 @@ protected:
     ccScriptType m_eScriptType;         ///< type of script binding, lua or javascript
     
     CCComponentContainer *m_pComponentContainer;        ///< Dictionary of components
+    uint8_t _test[0x8];
 
 };
 

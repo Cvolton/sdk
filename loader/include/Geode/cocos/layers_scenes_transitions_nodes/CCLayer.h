@@ -197,6 +197,7 @@ protected:
     RT_ADD(
         bool m_bKeyboardEnabled;
         bool m_bMouseEnabled;
+        uint8_t _test[0x4];
     )
     
 private:

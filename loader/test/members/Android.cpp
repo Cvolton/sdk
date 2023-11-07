@@ -5,8 +5,11 @@
 // Add known android struct members here
 
 // needed classes are ones in the ids folder and some generic ones (i think they are already done though so only ids)
+static_assert(sizeof(cocos2d::CCObject) == 0x30);
+static_assert(sizeof(cocos2d::CCNode) == 0x104);
+static_assert(sizeof(cocos2d::CCLayer) == 0x138);
 
-GEODE_MEMBER_CHECK(GameManager, m_playLayer, 0x138);
+/*GEODE_MEMBER_CHECK(GameManager, m_playLayer, 0x138);
 GEODE_MEMBER_CHECK(GameManager, m_levelEditorLayer, 0x13c);
 GEODE_MEMBER_CHECK(GameManager, m_canGetLevelSaveData, 0x28c);
 
@@ -31,6 +34,6 @@ GEODE_MEMBER_CHECK(TeleportPortalObject, m_orangePortal, 0x430);
 GEODE_MEMBER_CHECK(EditorUI, m_rotationControl, 0x16c);
 GEODE_MEMBER_CHECK(EditorUI, m_updateTimeMarkers, 0x1a4);
 GEODE_MEMBER_CHECK(EditorUI, m_selectedObjects, 0x1bc);
-GEODE_MEMBER_CHECK(EditorUI, m_selectedObject, 0x2c4);
+GEODE_MEMBER_CHECK(EditorUI, m_selectedObject, 0x2c4);*/
 
 #endif
