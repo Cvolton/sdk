@@ -55,6 +55,8 @@ struct CustomMenuLayer : Modify<CustomMenuLayer, MenuLayer> {
     bool init() {
         if (!MenuLayer::init()) return false;
 
+        Loader::get()->updateResources(true);
+
         // make sure to add the string IDs for nodes (Geode has no manual
         // hook order support yet so gotta do this to ensure)
         NodeIDs::provideFor(this);
@@ -62,6 +64,11 @@ struct CustomMenuLayer : Modify<CustomMenuLayer, MenuLayer> {
         auto winSize = CCDirector::sharedDirector()->getWinSize();
 
         // add geode button
+        auto test = CCSprite::createWithSpriteFrameName("geode-logo-outline-gold.png"_spr);
+        test->setScale(5.f);
+        test->setZOrder(40);
+        log::info("test: {}", test);
+        addChild(test);
         
         m_fields->m_geodeButton = CircleButtonSprite::createWithSpriteFrameName(
             "geode-logo-outline-gold.png"_spr,
@@ -100,7 +107,7 @@ struct CustomMenuLayer : Modify<CustomMenuLayer, MenuLayer> {
             if (std::any_of(problems.begin(), problems.end(), [&](auto& item) {
                     return item.type != LoadProblem::Type::Suggestion && item.type != LoadProblem::Type::Recommendation;
                 })) {
-                Notification::create("There were problems loading some mods", NotificationIcon::Error)->show();
+                //Notification::create("There were problems loading some mods", NotificationIcon::Error)->show();
             }
         }
 
@@ -167,7 +174,7 @@ struct CustomMenuLayer : Modify<CustomMenuLayer, MenuLayer> {
         }
 
         // update mods index
-        if (!INDEX_UPDATE_NOTIF && !Index::get()->hasTriedToUpdate()) {
+        /*if (!INDEX_UPDATE_NOTIF && !Index::get()->hasTriedToUpdate()) {
             this->addChild(EventListenerNode<IndexUpdateFilter>::create(
                 this, &CustomMenuLayer::onIndexUpdate
             ));
@@ -178,7 +185,7 @@ struct CustomMenuLayer : Modify<CustomMenuLayer, MenuLayer> {
             Index::get()->update();
         }
 
-        this->addUpdateIndicator();
+        this->addUpdateIndicator();*/
     
         return true;
     }

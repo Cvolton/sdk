@@ -197,7 +197,6 @@ protected:
     RT_ADD(
         bool m_bKeyboardEnabled;
         bool m_bMouseEnabled;
-        uint8_t _test[0x4];
     )
     
 private:
@@ -212,6 +211,8 @@ private:
     int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
 };
+
+static_assert(sizeof(CCLayer) == 0x128);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #pragma mark -

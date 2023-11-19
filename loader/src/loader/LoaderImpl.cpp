@@ -60,12 +60,12 @@ Result<> Loader::Impl::setup() {
 
     log::Logger::setup();
 
-    if (crashlog::setupPlatformHandler()) {
+    /*if (crashlog::setupPlatformHandler()) {
         log::debug("Set up platform crash logger");
     }
     else {
         log::debug("Unable to set up platform crash logger");
-    }
+    }*/
 
     log::debug("Setting up Loader...");
 
@@ -241,6 +241,8 @@ void Loader::Impl::updateModResources(Mod* mod) {
         else {
             CCTextureCache::get()->addImage(png.c_str(), false);
             CCSpriteFrameCache::get()->addSpriteFramesWithFile(plist.c_str());
+            log::info("Sheet should be loaded");
+            log::info("Path: {} {}", ccfu->fullPathForFilename(png.c_str(), false), ccfu->fullPathForFilename(plist.c_str(), false));
         }
     }
 }

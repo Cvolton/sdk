@@ -1599,7 +1599,7 @@ private:
      */
     CCPoint convertToWindowSpace(const CCPoint& nodePoint);
 
-protected:
+public:
     float m_fRotationX;                 ///< rotation angle on x-axis
     float m_fRotationY;                 ///< rotation angle on y-axis
     
@@ -1650,6 +1650,12 @@ protected:
     bool m_bRunning;                    ///< is running
     
     bool m_bTransformDirty;             ///< transform dirty flag
+    RT_ADD(
+        char byteD6;
+        char field_D7;
+        int field_D8;
+        int field_DC;
+    )
     bool m_bInverseDirty;               ///< transform dirty flag
     bool m_bAdditionalTransformDirty;   ///< The flag to check whether the additional transform is dirty
     bool m_bVisible;                    ///< is this node visible
@@ -1658,15 +1664,22 @@ protected:
                                           ///< Used by CCLayer and CCScene.
     
     bool m_bReorderChildDirty;          ///< children order dirty flag
+
+    RT_ADD(
+        char field_E5;
+        char field_E6;
+        char field_E7;
+    )
     
     int m_nScriptHandler;               ///< script handler for onEnter() & onExit(), used in Javascript binding and Lua binding.
     int m_nUpdateScriptHandler;         ///< script handler for update() callback per frame, which is invoked from lua & javascript.
     ccScriptType m_eScriptType;         ///< type of script binding, lua or javascript
     
     CCComponentContainer *m_pComponentContainer;        ///< Dictionary of components
-    uint8_t _test[0x8];
 
 };
+
+static_assert(sizeof(CCNode) == 0xF8);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 //#pragma mark - CCNodeRGBA

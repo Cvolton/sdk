@@ -463,6 +463,8 @@ void printModsAndroid(std::stringstream& stream) {
 
 static std::string s_result;
 bool crashlog::setupPlatformHandler() {
+    log::info("setupPlatformHandler");
+
     JniMethodInfo t;
     
     if (JniHelper::getStaticMethodInfo(t, "com/geode/launcher/utils/GeodeUtils", "getLogcatCrashBuffer", "()Ljava/lang/String;")) {
@@ -491,6 +493,7 @@ bool crashlog::setupPlatformHandler() {
 
     }
 
+    log::info("setupPlatformHandler over");
     return true;
 }
 

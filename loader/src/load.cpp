@@ -15,6 +15,8 @@ using namespace geode::prelude;
 #include "load.hpp"
 
 $execute {
+    log::info("execute 1");
+
     listenForSettingChanges("show-platform-console", +[](bool value) {
         if (value) {
             Loader::get()->openPlatformConsole();
@@ -55,6 +57,8 @@ $execute {
 
         return res;
     });
+
+    log::info("execute 2");
 }
 
 int geodeEntry(void* platformData) {

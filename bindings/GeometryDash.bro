@@ -4494,6 +4494,7 @@ class LoadingLayer : cocos2d::CCLayer {
     const char* getLoadingString() = win 0x18cf40;
     void loadAssets() = mac 0x1dfb20, win 0x18c8e0, ios 0x130278;
     void loadingFinished() = win 0x18c790;
+    void updateProgress(int);
 
     static cocos2d::CCScene* scene(bool fromReload) {
         auto scene = cocos2d::CCScene::create();

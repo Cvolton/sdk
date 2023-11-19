@@ -3,11 +3,14 @@
 #ifdef GEODE_IS_ANDROID
 
 // Add known android struct members here
+GEODE_MEMBER_CHECK(cocos2d::CCNode, m_pUserData, 0xB8);
+GEODE_MEMBER_CHECK(cocos2d::CCFileUtils, m_searchPathArray, 0x14);
+GEODE_MEMBER_CHECK(LoadingLayer, m_sliderBar, 0x138);
 
 // needed classes are ones in the ids folder and some generic ones (i think they are already done though so only ids)
-static_assert(sizeof(cocos2d::CCObject) == 0x30);
+/*static_assert(sizeof(cocos2d::CCObject) == 0x30);
 static_assert(sizeof(cocos2d::CCNode) == 0x104);
-static_assert(sizeof(cocos2d::CCLayer) == 0x138);
+static_assert(sizeof(cocos2d::CCLayer) == 0x138);*/
 
 /*GEODE_MEMBER_CHECK(GameManager, m_playLayer, 0x138);
 GEODE_MEMBER_CHECK(GameManager, m_levelEditorLayer, 0x13c);

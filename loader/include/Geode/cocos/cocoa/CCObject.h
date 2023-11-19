@@ -108,7 +108,6 @@ protected:
 
     CCObjectType m_eObjType;
     int m_nUnknown;
-    uint8_t m_nTest[0x10];
 public:
 	GEODE_CUSTOM_CONSTRUCTOR_BEGIN(CCObject)
     CCObject(void);
@@ -151,6 +150,9 @@ public:
 
     friend class CCAutoreleasePool;
 };
+
+static_assert(sizeof(CCObject) == 0x20);
+
 #pragma warning(pop)
 
 typedef void (CCObject::*SEL_SCHEDULE)(float);

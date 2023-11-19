@@ -35,6 +35,8 @@ struct CustomLoadingLayer : Modify<CustomLoadingLayer, LoadingLayer> {
 
     // hook
     bool init(bool fromReload) {
+        log::info("loadinglayer::init");
+
         CCFileUtils::get()->updatePaths();
 
         if (!LoadingLayer::init(fromReload)) return false;
@@ -160,7 +162,7 @@ struct CustomLoadingLayer : Modify<CustomLoadingLayer, LoadingLayer> {
     }
     
     // hook
-    void loadAssets() {        
+    void loadAssets() {
         switch (m_fields->m_geodeLoadStep) {
         case 0:
             if (this->skipOnRefresh()) this->setupLoadingMods();
@@ -178,5 +180,9 @@ struct CustomLoadingLayer : Modify<CustomLoadingLayer, LoadingLayer> {
             break;
         }
         this->updateLoadingBar();
+    }
+
+    void updateProgress(int something) {
+        log::info("something: {}", something);
     }
 };
