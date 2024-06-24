@@ -7,6 +7,9 @@ using namespace geode::prelude;
 DefaultEventListenerPool::DefaultEventListenerPool() : m_data(new Data) {}
 
 bool DefaultEventListenerPool::add(EventListenerProtocol* listener) {
+    if(m_data) log::info("data ptr {}", (void*) m_data.get());
+    else log::info("data ptr nullptr");
+
     if (!m_data) m_data = std::make_unique<Data>();
 
     std::unique_lock lock(m_data->m_mutex);
