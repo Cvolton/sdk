@@ -77,7 +77,8 @@ DefaultEventListenerPool* DefaultEventListenerPool::create() {
 }
 
 DefaultEventListenerPool* DefaultEventListenerPool::get() {
-    static auto inst = new DefaultEventListenerPool();
+    static DefaultEventListenerPool* inst = nullptr;
+    if(!inst) inst = DefaultEventListenerPool::create();
     return inst;
 }
 
