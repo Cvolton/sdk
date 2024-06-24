@@ -96,6 +96,7 @@ if (WIN32)
 	# This allows you to compile in debug mode
 	add_compile_definitions(_HAS_ITERATOR_DEBUGGING=0)
 	add_definitions(-D_HAS_ITERATOR_DEBUGGING=0)
+	add_definitions(-D_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR=1)
 endif()
 
 
