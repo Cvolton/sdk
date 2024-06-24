@@ -9,7 +9,7 @@ DefaultEventListenerPool::DefaultEventListenerPool() : m_data(new Data) {}
 bool DefaultEventListenerPool::add(EventListenerProtocol* listener) {
     if (!m_data) m_data = std::make_unique<Data>();
 
-    std::unique_lock lock(m_data->m_mutex);
+    //std::unique_lock lock(m_data->m_mutex);
     if (ranges::contains(m_data->m_listeners, listener) || ranges::contains(m_data->m_toAdd, listener)) {
         return false;
     }
