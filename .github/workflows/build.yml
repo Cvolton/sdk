@@ -203,7 +203,6 @@ jobs:
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
         -DCMAKE_C_COMPILER=clang
         -DCMAKE_CXX_COMPILER=clang++
-        -D_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR=1
         -DGEODE_CODEGEN_CMAKE_ARGS="-DCMAKE_C_COMPILER=clang;-DCMAKE_CXX_COMPILER=clang++;-G Ninja"
         ${{ inputs.build-debug-info && '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' || '' }}
         ${{ matrix.config.extra_flags }}
