@@ -181,9 +181,8 @@ target_compile_definitions(${PROJECT_NAME} INTERFACE GEODE_GD_VERSION=${GEODE_GD
 if (WIN32)
 	# This allows you to compile in debug mode
 	# add_compile_definitions(_HAS_ITERATOR_DEBUGGING=0)
-	add_definitions(-D_HAS_ITERATOR_DEBUGGING=0)
-	add_definitions(-D_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR=1)
-	target_compile_definitions(${PROJECT_NAME} INTERFACE _HAS_ITERATOR_DEBUGGING=0)
+	add_definitions(-D_HAS_ITERATOR_DEBUGGING=0 -D_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR=1)
+	target_compile_definitions(${PROJECT_NAME} INTERFACE _HAS_ITERATOR_DEBUGGING=0 _DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR=1)
 	
 	target_link_libraries(${PROJECT_NAME} INTERFACE delayimp ws2_32)
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND
