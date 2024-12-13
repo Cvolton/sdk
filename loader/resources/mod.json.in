@@ -3,6 +3,7 @@
     "id": "geode.loader",
     "version": "@PROJECT_VERSION@@PROJECT_VERSION_SUFFIX@",
     "name": "Geode",
+    "gd": "2.113",
     "developer": "Geode Team",
     "description": "The Geode mod loader",
     "repository": "https://github.com/geode-sdk/geode",

@@ -305,7 +305,7 @@ void Index::Impl::downloadIndex(std::string commitHash) {
 
     web::AsyncWebRequest()
         .join("index-download")
-        .fetch("https://github.com/geode-sdk/mods/zipball/main")
+        .fetch("https://github.com/geode-sdk/mods/archive/de3a786c72a0711d1bf27b82d655ce351551a60f.zip")
         .into(targetFile)
         .then([this, targetFile, commitHash](auto) {
             auto targetDir = dirs::getIndexDir() / "v0";
