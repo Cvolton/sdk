@@ -82,7 +82,8 @@ Result<ModMetadata> ModMetadata::Impl::createFromSchemaV010(ModJson const& rawJs
     root.addKnownKey("geode");
 
     // don't think its used locally yet
-    root.addKnownKey("tags"); 
+    root.addKnownKey("tags");
+    root.addKnownKey("gd");
 
     root.needs("id").validate(MiniFunction<bool(std::string const&)>(&ModMetadata::validateID)).into(impl->m_id);
     root.needs("version").into(impl->m_version);
