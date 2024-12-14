@@ -184,11 +184,7 @@ if (NOT GEODE_BUILDING_DOCS)
 	set(MZ_OPENSSL Off CACHE INTERNAL "")
 	set(MZ_LIBBSD Off CACHE INTERNAL "")
 	set(CMAKE_WARN_DEPRECATED OFF CACHE BOOL "" FORCE)
-	CPMAddPackage(
-		GITHUB_REPOSITORY zlib-ng/minizip-ng
-		GIT_TAG cee6d8c
-		OPTIONS "CMAKE_POLICY_DEFAULT_CMP0048 OLD"
-	)
+	CPMAddPackage("gh:geode-sdk/minizip-ng#43d9254")
 	set(CMAKE_WARN_DEPRECATED ON CACHE BOOL "" FORCE)
 
 	# Silence warnings from dependencies

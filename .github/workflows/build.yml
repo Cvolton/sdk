@@ -19,7 +19,7 @@ jobs:
       matrix:
         config:
         - name: Windows
-          os: windows-2019
+          os: windows-latest
           id: win
           extra_flags: -T host=x64 -A win32 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEODE_DEBUG=On
           # uncomment to use vs clang-cl and ninja
