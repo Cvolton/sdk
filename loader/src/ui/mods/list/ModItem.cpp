@@ -947,7 +947,67 @@ void ModItem::onViewError(CCObject*) {
                 case LoadProblem::Type::Outdated: title = "Outdated"; break;
                 case LoadProblem::Type::HasIncompatibilities: title = "Incompatibilities"; break;
             }
-            MDPopup::create(title, problem->message, "OK")->show();
+            MDPopup::create(title, problem->message, "OK", "Fix All", [mod, problem](bool btn2) {
+                if (!btn2) {
+                    return;
+                }
+
+                std::vector<geode::ModMetadata::Dependency> toInstall;
+                std::vector<geode::ModMetadata::Dependency> toEnable;
+                std::vector<geode::ModMetadata::Incompatibility> toDisable;
+
+                for (auto const& dep : mod->getMetadata().getIncompatibilities()) {
+                    if (!dep.getMod() || !dep.getVersion().compare(dep.getMod()->getVersion()) || !dep.getMod()->shouldLoad() || !dep.getMod()->getMetadata().checkGameVersion()) {
+                        continue;
+                    }
+                    if (dep.isBreaking()) {
+                        toDisable.push_back(dep);
+                    }
+                }
+
+                for (auto const& dep : mod->getMetadata().getDependencies()) {
+                    if (
+                        !dep.isRequired() ||
+                        (dep.getMod() && dep.getMod()->isLoaded() && dep.getVersion().compare(dep.getMod()->getVersion()))
+                    ) {
+                        continue;
+                    }
+
+                    if (!Loader::get()->getInstalledMod(dep.getID())) {
+                        toInstall.push_back(dep);
+                    }
+                    else {
+                        auto installedDependency = Loader::get()->getInstalledMod(dep.getID());
+                        if (!installedDependency->isLoaded()) {
+                            toEnable.push_back(dep);
+                        }
+                        else if (dep.getVersion().compareWithReason(installedDependency->getVersion()) == VersionCompareResult::TooOld) {
+                            toInstall.push_back(dep);
+                        }
+                    }
+                }
+
+                createQuickPopup(
+                    "Fix All Issues",
+                    fmt::format("This will <cg>install</c> {} mods, <cy>enable</c> {} mods and <cr>disable</c> {} mods. Are you sure you want to continue?", toInstall.size(), toEnable.size(), toDisable.size()),
+                    "No", "Yes",
+                    [toInstall, toEnable , toDisable](auto alert, bool btn2) {
+                        if (!btn2) {
+                            return;
+                        }
+
+                        for (auto const& dep : toDisable) {
+                            dep.getMod()->disable();
+                        }
+                        for (auto const& dep : toEnable) {
+                            dep.getMod()->enable();
+                        }
+                        for (auto const& dep : toInstall) {
+                            server::ModDownloadManager::get()->startDownload(dep.getID(), dep.getVersion().getUnderlyingVersion());
+                        }
+                    }
+                );
+            })->show();
         }
     }
 }
